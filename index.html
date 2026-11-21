@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A.I. FOR DESIGNERS — Krystal Contreras</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Reset & Base Setup */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; /* 20px base */
+      line-height: 1.6;
+      color: #D85C8A; /* Primary Text: Darker Pink for high visibility */
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+      
+      /* Smooth 8s background animation loop cycling between #FFFAFA and #FDF5F5 */
+      background: linear-gradient(135deg, #FFFAFA, #FDF5F5, #FFFAFA);
+      background-size: 200% 200%;
+      animation: bgShift 8s ease infinite;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Custom Browser Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFFAFA;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FAE6FA;
+      border-radius: 4px;
+    }
+
+    /* Moving Background Canvas overlay */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Custom Brand Cursor Graphic */
+    .custom-cursor {
+      width: 28px;
+      height: 28px;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+    }
+
+    /* Typography Settings */
+    h1, h2, h3 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      line-height: 1.1;
+      color: #D85C8A; /* Darker Pink */
+    }
+
+    h1 {
+      font-size: 4rem; /* 64px */
+    }
+
+    h2 {
+      font-size: 2.75rem; /* 44px */
+    }
+
+    a {
+      color: #C84B79;
+      text-decoration: none;
+    }
+
+    /* Layout Structure */
+    .site-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-bottom: 120px; /* Space for fixed bottom logo */
+    }
+
+    /* Hero Section */
+    .hero-container {
+      position: relative;
+      width: 100vw;
+      min-height: 60vh;
+      height: 60vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
+      color: #FFFFFF; /* Crisp white over image with dark backdrop glow for max contrast */
+      text-shadow: 0 4px 18px rgba(180, 50, 100, 0.65), 0 2px 6px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+
+    /* Main Content Area */
+    .content-container {
+      max-width: 1200px;
+      margin: 48px auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    .meta-card {
+      border: 2px solid #FAE6FA;
+      padding: 28px;
+      margin-bottom: 48px;
+      background: rgba(255, 250, 250, 0.85);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 20px rgba(216, 92, 138, 0.08);
+    }
+
+    .meta-card p {
+      margin-top: 8px;
+    }
+
+    /* Work List Grid */
+    .work-section-title {
+      margin-bottom: 24px;
+    }
+
+    .work-grid {
+      display: grid;
+      gap: 32px 48px; /* Desktop: 32px col gap, 48px row gap */
+    }
+
+    /* Desktop Breakpoint (>= 768px) */
+    @media (min-width: 768px) {
+      .work-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Mobile Breakpoint (< 768px) */
+    @media (max-width: 767px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .work-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .hero-container {
+        min-height: 40vh;
+        height: 40vh;
+      }
+    }
+
+    /* Assignment Links (Square Outlined Buttons) */
+    .assignment-btn {
+      display: flex;
+      align-items: center;
+      padding: 18px 20px;
+      border: 2px solid #FAE6FA;
+      border-radius: 0px; /* Completely square corners */
+      background: rgba(255, 250, 250, 0.9);
+      color: #D85C8A; /* Darker Pink Text */
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 10px rgba(250, 230, 250, 0.4);
+    }
+
+    .assignment-btn:hover {
+      border-color: #D85C8A;
+      outline: 1px solid #D85C8A; /* Custom hover state outline */
+      text-decoration: underline; /* Underline text decoration on hover */
+      background: #FFFFFF;
+      color: #B83C6A;
+    }
+
+    .btn-num {
+      font-family: 'DM Serif Display', serif;
+      color: #D85C8A;
+      margin-right: 14px;
+      font-size: 1.4rem;
+    }
+
+    /* Rhode Skin Reference - Fixed Dynamic Footer Logo */
+    .footer-logo-container {
+      position: fixed;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      color: #D85C8A;
+      background: rgba(255, 250, 250, 0.95);
+      border: 2px solid #FAE6FA;
+      padding: 8px 24px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      transform: scale(1);
+      box-shadow: 0 4px 18px rgba(216, 92, 138, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Animated Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Custom Brand Character Cursor -->
+  <div class="custom-cursor" id="cursor">🎀</div>
+
+  <div class="site-wrapper">
+    
+    <!-- Hero Image & Title Placement (Full Viewport Width Top Section) -->
+    <header class="hero-container">
+      <img src="hero.png" alt="A.I. for Designers Hero" class="hero-image">
+      <h1 class="hero-title">A.I. FOR DESIGNERS<br>Krystal Contreras</h1>
+    </header>
+
+    <!-- Main Section -->
+    <main class="content-container">
+      
+      <!-- Meta Information & Welcome Message -->
+      <section class="meta-card">
+        <h2>ART 3041 · Fall 2026</h2>
+        <p><a href="mailto:Krystal.Contreras36@login.cuny.edu">Krystal.Contreras36@login.cuny.edu</a></p>
+        <div style="margin-top: 20px; border-top: 1px solid #FAE6FA; padding-top: 16px;">
+          <h3 style="font-size: 1.8rem; margin-bottom: 6px;">Welcome! ✦</h3>
+          <p style="color: #D85C8A; font-size: 1.25rem;">
+            Welcome to my design portal! Here, I share my journey exploring the intersection of artificial intelligence, visual storytelling, and emerging interface design. Feel free to browse through my work and projects below.
+          </p>
+        </div>
+      </section>
+
+      <!-- Work List Grid -->
+      <section>
+        <h2 class="work-section-title">Work</h2>
+        <div class="work-grid">
+          <a href="#" class="assignment-btn interactive">
+            <span class="btn-num">01</span> Custom Instructions
+          </a>
+          <a href="#" class="assignment-btn interactive">
+            <span class="btn-num">02</span> A Style Guide for Your AI
+          </a>
+          <a href="#" class="assignment-btn interactive">
+            <span class="btn-num">03</span> Design a ___
+          </a>
+          <a href="#" class="assignment-btn interactive">
+            <span class="btn-num">04</span> Commute Story
+          </a>
+          <a href="#" class="assignment-btn interactive">
+            <span class="btn-num">05</span> Become a Crea(i)tive Director
+          </a>
+          <a href="#" class="assignment-btn interactive">
+            <span class="btn-num">06</span> Experimental AI Interface
+          </a>
+          <a href="#" class="assignment-btn interactive">
+            <span class="btn-num">07</span> Open
+          </a>
+          <a href="#" class="assignment-btn interactive">
+            <span class="btn-num">08</span> Sequence Chair
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Dynamic Footer Logo (Rhode Skin Reference) -->
+  <div class="footer-logo-container">
+    <div class="footer-logo" id="brand-logo">
+      KRYSTAL CONTRERAS ✦ PORTAL
+    </div>
+  </div>
+
+  <script>
+    /* --- Custom Cursor Logic (SAMO ONDOH Reference) --- */
+    const cursor = document.getElementById('cursor');
+
+    function attachCursorEvents() {
+      const interactiveElements = document.querySelectorAll('.interactive, a, button');
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.style.opacity = '1';
+          cursor.style.transform = 'translate(-50%, -50%) scale(1.4)';
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor.style.opacity = '0';
+          cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+      });
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    attachCursorEvents();
+
+    /* --- Dynamic Moving Canvas Background --- */
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let particles = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.radius = Math.random() * 2 + 1;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.alpha = Math.random() * 0.5 + 0.2;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(216, 92, 138, ${this.alpha})`; /* Matching Darker Pink Particles */
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateBackground() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateBackground);
+    }
+
+    animateBackground();
+
+    /* --- Rhode Skin Scroll Listener (Dynamic Footer Logo Scale) --- */
+    const logo = document.getElementById('brand-logo');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < lastScrollY) {
+        // Scrolling UP -> Scale Up
+        logo.style.transform = 'scale(1.2)';
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling DOWN -> Shrink
+        logo.style.transform = 'scale(0.8)';
+      }
+
+      lastScrollY = currentScrollY;
+    });
+  </script>
+</body>
+</html>
