@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLOOM FESTIVAL — March 20–21, 2027 • Sheep Meadow, Central Park, NYC</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: DM Serif Display, Cormorant Garamond, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tone.js for gentle interactive ambient vibe synth previews -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FFFAFA',
+            blushBg: '#FFF4F8',
+            blushPink: '#F7B7D6',
+            bubblegum: '#F8B6C1',
+            buttercream: '#FDF69B',
+            butterLight: '#FFF8B8',
+            coralRose: '#D85C8A',
+            deepRose: '#B84370',
+            sage: '#226F54',
+            sageDark: '#174E3B',
+            sunlight: '#FDF69B',
+            ink: '#2B2125',
+            mutedInk: '#6B565F'
+          },
+          fontFamily: {
+            serifDisplay: ['"DM Serif Display"', 'serif'],
+            serifEditorial: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'editorial': '0 20px 50px -15px rgba(216, 92, 138, 0.16)',
+            'petal': '0 10px 30px -5px rgba(43, 33, 37, 0.10)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-ivory: #FFFAFA;
+      --bg-blush: #FFF4F8;
+      --pink-bubblegum: #F7B7D6;
+      --yellow-buttercream: #FDF69B;
+      --rose-coral: #D85C8A;
+      --plum-ink: #2B2125;
+      --green-sage: #226F54;
+    }
+
+    body {
+      background-color: var(--bg-ivory);
+      color: var(--plum-ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Seamless blend for the white background of the original BLOOM logo PNG */
+    .bloom-logo-blend {
+      mix-blend-mode: multiply;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Custom Botanical & Pastel Bubblegum Radial Gradients */
+    .bg-bloom-mesh {
+      background-color: #FFFAFA;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(247, 183, 214, 0.45) 0px, transparent 52%),
+        radial-gradient(at 85% 20%, rgba(253, 246, 155, 0.55) 0px, transparent 50%),
+        radial-gradient(at 50% 82%, rgba(248, 182, 193, 0.28) 0px, transparent 55%),
+        radial-gradient(at 90% 85%, rgba(216, 92, 138, 0.12) 0px, transparent 45%);
+    }
+
+    /* Splash Screen Blur-Fade & Smooth Scale Transition */
+    #splash-screen {
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), filter 0.85s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.85s;
+    }
+    #splash-screen.fade-out {
+      opacity: 0;
+      filter: blur(18px);
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    @keyframes splashLogoEntrance {
+      0% { opacity: 0; transform: scale(0.86) translateY(8px); }
+      100% { opacity: 1; transform: scale(1) translateY(0px); }
+    }
+    .animate-splash-logo {
+      animation: splashLogoEntrance 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Subtle floating animations */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+    .animate-float-slow {
+      animation: floatSlow 6.5s ease-in-out infinite;
+    }
+    .animate-pulse-glow {
+      animation: pulseGlow 5s ease-in-out infinite;
+    }
+
+    /* Audio Visualizer Equalizer Bars */
+    @keyframes eqBar {
+      0%, 100% { height: 22%; }
+      50% { height: 95%; }
+    }
+    .eq-active .bar-1 { animation: eqBar 0.55s ease-in-out infinite; }
+    .eq-active .bar-2 { animation: eqBar 0.40s ease-in-out infinite 0.15s; }
+    .eq-active .bar-3 { animation: eqBar 0.65s ease-in-out infinite 0.05s; }
+    .eq-active .bar-4 { animation: eqBar 0.48s ease-in-out infinite 0.25s; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFF4F8;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #F6B3D5;
+      border-radius: 999px;
+      border: 2px solid #FFF4F8;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D85C8A;
+    }
+
+    /* Lineup Tier Hover Micro-interaction */
+    .artist-item {
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease;
+    }
+    .artist-item:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-blushPink selection:text-ink">
+
+  <!-- =========================================================
+       1. SMOOTH AUTO-FADING SPLASH SCREEN (ORIGINAL BLOOM ARTWORK)
+       ========================================================= -->
+  <div id="splash-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#FFFAFA] bg-bloom-mesh px-6">
+    <div class="relative flex flex-col items-center text-center animate-splash-logo max-w-lg w-full">
+      <!-- Soft Buttercream & Bubblegum Aura -->
+      <div class="absolute -inset-6 rounded-full bg-gradient-to-tr from-blushPink/35 via-buttercream/40 to-transparent blur-2xl pointer-events-none"></div>
+      
+      <!-- Exact Custom BLOOM Logo Artwork -->
+      <img 
+        src="bloomlogo.png" 
+        alt="BLOOM Festival Official Logo" 
+        class="relative w-72 sm:w-96 md:w-[28rem] h-auto bloom-logo-blend drop-shadow-sm"
+        data-bloom-logo-img
+      />
+
+      <p class="relative mt-2 text-xs sm:text-sm font-bold uppercase tracking-[0.35em] text-coralRose">
+        FESTIVAL
+      </p>
+      <p class="relative mt-2 font-serifEditorial italic text-xl sm:text-2xl text-mutedInk">
+        March 20–21, 2027 • Sheep Meadow, Central Park, NYC
+      </p>
+    </div>
+
+    <button id="skip-splash" class="absolute bottom-8 text-xs uppercase tracking-[0.2em] text-mutedInk hover:text-coralRose transition-colors px-5 py-2.5 rounded-full border border-blushPink bg-white/80 backdrop-blur-sm shadow-sm">
+      Enter Central Park →
+    </button>
+  </div>
+
+  <!-- =========================================================
+       2. STICKY GLASSMORPHISM NAVIGATION
+       ========================================================= -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8 pt-3">
+    <nav class="max-w-7xl mx-auto rounded-full bg-white/85 backdrop-blur-md border border-blushPink/90 shadow-sm px-5 sm:px-8 py-2.5 flex items-center justify-between">
+      <!-- Compact Original BLOOM Logo Lockup -->
+      <a href="#top" class="flex items-center gap-2 group py-0.5" aria-label="BLOOM Festival Home">
+        <img 
+          src="bloomlogo.png" 
+          alt="BLOOM" 
+          class="h-8 sm:h-10 w-auto bloom-logo-blend transition-transform duration-300 group-hover:scale-105"
+          data-bloom-logo-img
+        />
+        <span class="hidden sm:inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-coralRose border-l border-blushPink pl-2.5">
+          2027
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-mutedInk">
+        <a href="#lineup" class="hover:text-coralRose transition-colors py-1">Lineup</a>
+        <a href="#posters" class="hover:text-coralRose transition-colors py-1">Official Posters</a>
+        <a href="#experience" class="hover:text-coralRose transition-colors py-1">Central Park</a>
+        <a href="#tickets" class="hover:text-coralRose transition-colors py-1">Passes</a>
+        <a href="#faq" class="hover:text-coralRose transition-colors py-1">FAQ</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <button onclick="openCheckoutModal('weekend')" class="rounded-full bg-ink hover:bg-coralRose text-buttercream hover:text-white text-xs sm:text-sm font-semibold px-5 py-2.5 shadow-petal transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]">
+          Get Passes
+        </button>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded-full text-ink hover:bg-blushPink/40 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 max-w-7xl mx-auto rounded-3xl bg-white/95 backdrop-blur-lg border border-blushPink shadow-editorial p-6">
+      <div class="flex flex-col space-y-4 text-center font-medium text-ink">
+        <a href="#lineup" class="mobile-nav-link py-2 rounded-xl hover:bg-blushPink/35">Lineup</a>
+        <a href="#posters" class="mobile-nav-link py-2 rounded-xl hover:bg-blushPink/35">Official Posters</a>
+        <a href="#experience" class="mobile-nav-link py-2 rounded-xl hover:bg-blushPink/35">Central Park Experience</a>
+        <a href="#tickets" class="mobile-nav-link py-2 rounded-xl hover:bg-blushPink/35">Weekend Passes</a>
+        <a href="#faq" class="mobile-nav-link py-2 rounded-xl hover:bg-blushPink/35">FAQ</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       3. FULL-VIEWPORT HERO SECTION (ORIGINAL BLOOM CENTERPIECE)
+       ========================================================= -->
+  <section id="top" class="relative min-h-screen flex items-center justify-center bg-bloom-mesh pt-28 pb-16 px-4 sm:px-6 overflow-hidden">
+    <!-- Interactive Canvas for Delicate Floating Bubblegum & Buttercream Petals -->
+    <canvas id="petal-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Decorative Groovy Botanical Petals (SVG matching the logo's 5-petal flowers) -->
+    <svg class="hidden lg:block absolute top-28 left-10 w-48 h-48 pointer-events-none animate-float-slow opacity-70" viewBox="0 0 160 160" fill="none">
+      <circle cx="80" cy="42" r="24" fill="#F6B3D5"/>
+      <circle cx="116" cy="68" r="24" fill="#F6B3D5"/>
+      <circle cx="102" cy="110" r="24" fill="#F6B3D5"/>
+      <circle cx="58" cy="110" r="24" fill="#F6B3D5"/>
+      <circle cx="44" cy="68" r="24" fill="#F6B3D5"/>
+      <circle cx="80" cy="80" r="18" fill="#FAF59E" stroke="#FFF9FB" stroke-width="3"/>
+    </svg>
+
+    <svg class="hidden lg:block absolute bottom-20 right-10 w-56 h-56 pointer-events-none animate-float-slow opacity-75" style="animation-delay: 2.2s;" viewBox="0 0 160 160" fill="none">
+      <circle cx="80" cy="42" r="24" fill="#F8B6D8"/>
+      <circle cx="116" cy="68" r="24" fill="#F8B6D8"/>
+      <circle cx="102" cy="110" r="24" fill="#F8B6D8"/>
+      <circle cx="58" cy="110" r="24" fill="#F8B6D8"/>
+      <circle cx="44" cy="68" r="24" fill="#F8B6D8"/>
+      <circle cx="80" cy="80" r="18" fill="#FAF59E" stroke="#FFF9FB" stroke-width="3"/>
+    </svg>
+
+    <!-- Main Hero Content Container -->
+    <div class="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
+      <!-- Date & Venue Pill -->
+      <div class="inline-flex items-center gap-2.5 rounded-full bg-white/90 backdrop-blur-sm border border-blushPink px-4 sm:px-5 py-1.5 mb-6 shadow-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-coralRose animate-ping"></span>
+        <span class="text-xs sm:text-sm font-semibold tracking-wider uppercase text-ink">March 20–21, 2027 • Sheep Meadow, Central Park, NYC</span>
+      </div>
+
+      <!-- Original Groovy Bubbly BLOOM Logo Centerpiece -->
+      <div class="relative w-full max-w-3xl mx-auto px-2 sm:px-6 py-2">
+        <!-- Scroll-Reactive Soft Buttercream & Bubblegum Halo Behind Artwork -->
+        <div id="hero-floral-emblem" class="absolute inset-0 flex items-center justify-center pointer-events-none transition-transform duration-150 ease-out">
+          <div class="w-72 h-44 sm:w-[34rem] sm:h-64 rounded-full bg-gradient-to-r from-buttercream/65 via-blushPink/40 to-buttercream/65 blur-3xl"></div>
+        </div>
+
+        <!-- Custom Artwork Image with Seamless Multiply Blend & Interactive Hover/Scroll Scale -->
+        <h1 class="sr-only">BLOOM FESTIVAL — March 20–21, 2027 • Sheep Meadow, Central Park, New York City</h1>
+        <div id="hero-logo-wrapper" class="relative transition-transform duration-300 ease-out hover:scale-[1.03]">
+          <img 
+            src="bloomlogo.png" 
+            alt="BLOOM Festival Official Logo" 
+            class="w-full max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto h-auto bloom-logo-blend"
+            data-bloom-logo-img
+          />
+          <p class="mt-1 font-sans text-sm sm:text-base md:text-lg font-bold uppercase tracking-[0.42em] text-coralRose">
+            FESTIVAL
+          </p>
+        </div>
+
+        <!-- Delicate Botanical Underline Flourish -->
+        <div class="relative mt-3 flex items-center justify-center gap-3">
+          <span class="h-[1.5px] w-14 sm:w-28 bg-gradient-to-r from-transparent to-blushPink"></span>
+          <span class="w-3 h-3 rounded-full bg-buttercream border-2 border-coralRose/60"></span>
+          <span class="h-[1.5px] w-14 sm:w-28 bg-gradient-to-l from-transparent to-blushPink"></span>
+        </div>
+      </div>
+
+      <!-- Subtitle -->
+      <p class="mt-4 max-w-2xl font-serifEditorial italic text-2xl sm:text-3xl md:text-4xl text-ink leading-snug">
+        March 20–21, 2027 • Sheep Meadow, Central Park, New York City
+      </p>
+
+      <p class="mt-4 max-w-xl text-sm sm:text-base text-mutedInk leading-relaxed">
+        Two unforgettable early-spring days of global pop icons, euphoric dance, R&amp;B, and living cherry-blossom installations in the heart of Manhattan.
+      </p>
+
+      <!-- Hero CTA Buttons -->
+      <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+        <a href="#lineup" class="w-full sm:w-auto rounded-full bg-coralRose hover:bg-deepRose text-white font-semibold text-sm sm:text-base px-8 py-4 shadow-editorial transition-all duration-200 hover:-translate-y-0.5">
+          Explore 2027 Lineup
+        </a>
+        <a href="#posters" class="w-full sm:w-auto rounded-full bg-white/90 hover:bg-blushPink/35 text-ink border border-blushPink font-semibold text-sm sm:text-base px-8 py-4 backdrop-blur-sm shadow-sm transition-all duration-200 hover:-translate-y-0.5">
+          View Official Posters
+        </a>
+        <button onclick="openCheckoutModal('weekend')" class="w-full sm:w-auto rounded-full bg-buttercream/90 hover:bg-buttercream text-ink border border-blushPink font-semibold text-sm sm:text-base px-8 py-4 backdrop-blur-sm shadow-sm transition-all duration-200 hover:-translate-y-0.5">
+          Reserve Passes
+        </button>
+      </div>
+
+      <!-- Quick Headliner Marquee Teaser -->
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-bold uppercase tracking-[0.18em] text-mutedInk">
+        <span>Sabrina Carpenter</span>
+        <span class="text-coralRose">✿</span>
+        <span>Justin Bieber</span>
+        <span class="text-coralRose">✿</span>
+        <span>SZA</span>
+        <span class="text-coralRose">✿</span>
+        <span>Bruno Mars</span>
+        <span class="text-coralRose">✿</span>
+        <span>Post Malone</span>
+        <span class="text-coralRose">✿</span>
+        <span>Bad Bunny</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       4A. INTERACTIVE 2027 LINEUP & STAGE SOUND PREVIEW
+       ========================================================= -->
+  <section id="lineup" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#FFF4F8] border-y border-blushPink/70">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="inline-block rounded-full bg-buttercream/90 border border-blushPink px-3.5 py-1 text-xs font-bold uppercase tracking-[0.22em] text-ink">March 20–21, 2027 • 31+ Artists</span>
+          <h2 class="mt-3 font-serifDisplay text-4xl sm:text-5xl text-ink">2027 Festival Lineup</h2>
+        </div>
+
+        <!-- View Mode Toggle -->
+        <div class="inline-flex rounded-full bg-white p-1 border border-blushPink self-start lg:self-auto shadow-sm">
+          <button id="view-poster-btn" onclick="setLineupViewMode('poster')" class="rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider bg-coralRose text-white transition-all">
+            Official Poster Billing
+          </button>
+          <button id="view-grid-btn" onclick="setLineupViewMode('grid')" class="rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-mutedInk hover:text-ink transition-all">
+            Stage Grid
+          </button>
+        </div>
+      </div>
+
+      <!-- Day & Genre Filter Controls -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+        <div class="flex flex-wrap items-center gap-2">
+          <button data-day="all" class="day-tab active rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all bg-ink text-buttercream shadow-petal">All Weekend</button>
+          <button data-day="saturday" class="day-tab rounded-full px-5 py-2.5 text-xs sm:text-sm font-medium transition-all bg-white text-ink border border-blushPink hover:border-coralRose">Saturday · Mar 20</button>
+          <button data-day="sunday" class="day-tab rounded-full px-5 py-2.5 text-xs sm:text-sm font-medium transition-all bg-white text-ink border border-blushPink hover:border-coralRose">Sunday · Mar 21</button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button data-genre="all" class="genre-tag active text-xs px-3.5 py-1.5 rounded-full bg-blushPink text-ink font-semibold transition-all">All Genres</button>
+          <button data-genre="Pop & R&B" class="genre-tag text-xs px-3.5 py-1.5 rounded-full bg-white/90 text-mutedInk border border-blushPink hover:text-ink transition-all">Pop &amp; R&amp;B</button>
+          <button data-genre="Latin & Hip-Hop" class="genre-tag text-xs px-3.5 py-1.5 rounded-full bg-white/90 text-mutedInk border border-blushPink hover:text-ink transition-all">Latin &amp; Hip-Hop</button>
+          <button data-genre="K-Pop & Global" class="genre-tag text-xs px-3.5 py-1.5 rounded-full bg-white/90 text-mutedInk border border-blushPink hover:text-ink transition-all">K-Pop &amp; Global</button>
+          <button data-genre="Indie & Alt" class="genre-tag text-xs px-3.5 py-1.5 rounded-full bg-white/90 text-mutedInk border border-blushPink hover:text-ink transition-all">Indie &amp; Alt</button>
+          <button data-genre="Electronic & Dance" class="genre-tag text-xs px-3.5 py-1.5 rounded-full bg-white/90 text-mutedInk border border-blushPink hover:text-ink transition-all">Electronic &amp; Dance</button>
+        </div>
+      </div>
+
+      <!-- Main Lineup Split: Billing / Grid on Left, Artist Stage Preview on Right -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7 rounded-[2rem] bg-white border border-blushPink shadow-editorial p-6 sm:p-10">
+          <!-- Poster View -->
+          <div id="lineup-poster-view" class="space-y-8 text-center">
+            <div id="tier-headliners">
+              <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-coralRose mb-3">Headliners</p>
+              <div id="headliners-list" class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2"></div>
+            </div>
+            <div id="tier-subheadliners" class="pt-6 border-t border-blushPink/60">
+              <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-sage mb-3">Featured Performers</p>
+              <div id="subheadliners-list" class="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2"></div>
+            </div>
+            <div id="tier-supporting" class="pt-6 border-t border-blushPink/60">
+              <p class="text-[10px] font-bold uppercase tracking-[0.28em] text-mutedInk mb-3">Special Guests &amp; Supporting</p>
+              <div id="supporting-list" class="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1.5"></div>
+            </div>
+            <p class="pt-4 font-serifEditorial italic text-lg text-mutedInk">&amp; Many More Across Central Park</p>
+          </div>
+
+          <!-- Grid View -->
+          <div id="lineup-grid-view" class="hidden">
+            <div id="artist-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5"></div>
+          </div>
+
+          <!-- Empty State -->
+          <div id="lineup-empty" class="hidden py-12 text-center">
+            <p class="font-serifDisplay text-2xl text-ink">No artists match that filter combination</p>
+            <button onclick="resetLineupFilters()" class="mt-4 rounded-full bg-coralRose text-white text-xs font-semibold px-5 py-2.5">Reset Filters</button>
+          </div>
+        </div>
+
+        <!-- Sticky Selected Artist Preview & Tone.js Synth Card -->
+        <aside class="lg:col-span-5 lg:sticky lg:top-24 rounded-[2rem] bg-white border border-blushPink shadow-editorial overflow-hidden">
+          <div class="relative h-56 bg-bloom-mesh overflow-hidden">
+            <img id="preview-image" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Selected Artist" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/20 to-transparent"></div>
+            <div class="absolute top-4 left-4 flex items-center gap-2">
+              <span id="preview-day-badge" class="rounded-full bg-buttercream text-ink text-[11px] font-bold px-3 py-1">Saturday · Mar 20</span>
+              <span id="preview-genre-badge" class="rounded-full bg-white/90 text-ink text-[11px] font-semibold px-3 py-1">Pop &amp; R&amp;B</span>
+            </div>
+            <div class="absolute bottom-4 left-6 right-6 text-white">
+              <span id="preview-tier-label" class="text-[10px] font-bold uppercase tracking-[0.25em] text-buttercream">Headliner</span>
+              <h3 id="preview-name" class="font-serifDisplay text-3xl leading-tight">SABRINA CARPENTER</h3>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-7">
+            <div class="flex items-center justify-between text-xs font-semibold text-mutedInk pb-4 border-b border-blushPink/70">
+              <span id="preview-stage" class="text-sage">Cherry Blossom Main</span>
+              <span id="preview-time">8:45 PM – 10:00 PM</span>
+            </div>
+
+            <p id="preview-bio" class="mt-4 text-sm text-mutedInk leading-relaxed">
+              Sparkling theatrical pop hooks, vintage glamour, and a custom floral stage production under the Central Park skyline.
+            </p>
+
+            <div id="preview-vibes" class="mt-4 flex flex-wrap gap-2">
+              <span class="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-buttercream/85 text-ink">Golden-Hour Pop</span>
+              <span class="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-blushPink/55 text-ink">Live Strings</span>
+            </div>
+
+            <!-- Interactive Tone.js Stage Vibe Synth Button -->
+            <button onclick="toggleVibeAudio()" class="mt-6 w-full rounded-2xl bg-[#FFF4F8] hover:bg-blushPink/40 border border-blushPink p-3.5 flex items-center justify-between transition-colors">
+              <div class="flex items-center gap-3 text-left">
+                <span id="vibe-play-icon" class="w-9 h-9 rounded-full bg-coralRose text-white flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <div>
+                  <p id="vibe-btn-label" class="text-xs font-bold text-ink">Preview Stage Vibe</p>
+                  <p id="vibe-sub-label" class="text-[11px] text-mutedInk">Ambient Synth Loop</p>
+                </div>
+              </div>
+              <div id="vibe-visualizer" class="flex items-end gap-1 h-5 pr-1">
+                <span class="bar-1 w-1 bg-coralRose rounded-full h-1.5"></span>
+                <span class="bar-2 w-1 bg-coralRose rounded-full h-3"></span>
+                <span class="bar-3 w-1 bg-coralRose rounded-full h-2"></span>
+                <span class="bar-4 w-1 bg-coralRose rounded-full h-2.5"></span>
+              </div>
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       4B. OFFICIAL FESTIVAL POSTERS SHOWCASE (poster1.jpg & poster2.jpg)
+       ========================================================= -->
+  <section id="posters" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#FFFAFA] border-b border-blushPink/60">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="inline-block rounded-full bg-blushPink/50 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.22em] text-ink">2027 Visual Campaign</span>
+        <h2 class="mt-3 font-serifDisplay text-4xl sm:text-5xl text-ink">Official Festival Posters</h2>
+        <p class="mt-3 font-serifEditorial italic text-xl sm:text-2xl text-mutedInk">
+          Inspect the official announcement (<span class="not-italic font-sans text-sm font-semibold text-coralRose">poster1.jpg</span>) &amp; lineup (<span class="not-italic font-sans text-sm font-semibold text-coralRose">poster2.jpg</span>) posters or save a high-resolution copy.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
+        
+        <!-- POSTER 1: MAIN ANNOUNCEMENT POSTER (poster1.jpg) -->
+        <div class="flex flex-col">
+          <div onclick="openPosterLightbox('main')" class="group cursor-pointer relative flex-1 rounded-[2rem] bg-bloom-mesh border-2 border-blushPink shadow-editorial overflow-hidden transition-all duration-300 hover:-translate-y-1.5">
+            <!-- Top Badge Pill Floating Over Full-Bleed Poster -->
+            <div class="absolute top-4 inset-x-4 z-10 flex items-center justify-between pointer-events-none">
+              <span class="rounded-full bg-white/90 backdrop-blur-sm border border-blushPink px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-coralRose shadow-sm">
+                Main Announcement
+              </span>
+              <span class="rounded-full bg-buttercream/90 backdrop-blur-sm border border-blushPink px-3 py-1 text-[10px] font-semibold tracking-wider text-ink shadow-sm">
+                poster1.jpg
+              </span>
+            </div>
+
+            <!-- Actual poster1.jpg Artwork Full Frame -->
+            <div class="relative w-full h-full aspect-[3/4] overflow-hidden bg-gradient-to-br from-blushPink/35 via-buttercream/40 to-ivory flex items-center justify-center">
+              <img 
+                src="poster1.jpg" 
+                alt="BLOOM Festival 2027 Main Announcement Poster — March 20–21, 2027, Sheep Meadow, Central Park, NYC" 
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <!-- Graceful Fallback Preview if poster1.jpg is still loading/pending -->
+              <div class="hidden p-8 text-center flex flex-col items-center justify-center">
+                <img src="bloomlogo.png" alt="BLOOM" class="w-56 h-auto bloom-logo-blend mb-2" data-bloom-logo-img />
+                <p class="text-sm font-bold uppercase tracking-[0.4em] text-coralRose">FESTIVAL</p>
+                <p class="mt-4 font-serifDisplay text-xl text-ink">March 20–21, 2027</p>
+                <p class="font-serifEditorial italic text-lg text-mutedInk">Sheep Meadow, Central Park, NYC</p>
+                <span class="mt-4 text-[11px] font-mono text-mutedInk bg-white/80 px-3 py-1 rounded-full border border-blushPink">poster1.jpg</span>
+              </div>
+
+              <!-- Subtle Hover Inspect Overlay -->
+              <div class="absolute inset-x-0 bottom-4 z-10 flex justify-center pointer-events-none">
+                <span class="inline-flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-sm border border-blushPink px-4 py-1.5 text-xs font-semibold text-ink shadow-md group-hover:bg-coralRose group-hover:text-white transition-colors">
+                  <span>Inspect Full Poster</span>
+                  <span>↗</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center justify-between px-2">
+            <div>
+              <h3 class="font-serifDisplay text-xl text-ink">Main Festival Poster</h3>
+              <p class="text-xs text-mutedInk">Edition 01 • Central Park Spring Announcement</p>
+            </div>
+            <a href="poster1.jpg" download="poster1.jpg" onclick="notifyPosterDownload('poster1.jpg')" class="rounded-full bg-buttercream hover:bg-blushPink text-ink border border-blushPink text-xs font-semibold px-4 py-2 transition-colors">
+              Download JPG
+            </a>
+          </div>
+        </div>
+
+        <!-- POSTER 2: OFFICIAL LINEUP POSTER (poster2.jpg) -->
+        <div class="flex flex-col">
+          <div onclick="openPosterLightbox('lineup')" class="group cursor-pointer relative flex-1 rounded-[2rem] bg-white border-2 border-blushPink shadow-editorial overflow-hidden transition-all duration-300 hover:-translate-y-1.5">
+            <!-- Top Badge Pill Floating Over Full-Bleed Poster -->
+            <div class="absolute top-4 inset-x-4 z-10 flex items-center justify-between pointer-events-none">
+              <span class="rounded-full bg-white/90 backdrop-blur-sm border border-blushPink px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-sage shadow-sm">
+                Official Lineup
+              </span>
+              <span class="rounded-full bg-buttercream/90 backdrop-blur-sm border border-blushPink px-3 py-1 text-[10px] font-semibold tracking-wider text-ink shadow-sm">
+                poster2.jpg
+              </span>
+            </div>
+
+            <!-- Actual poster2.jpg Artwork Full Frame -->
+            <div class="relative w-full h-full aspect-[3/4] overflow-hidden bg-gradient-to-b from-blushPink/25 via-ivory to-buttercream/30 flex items-center justify-center">
+              <img 
+                src="poster2.jpg" 
+                alt="BLOOM Festival 2027 Official Lineup Poster — Sabrina Carpenter, Justin Bieber, SZA, Bad Bunny, Bruno Mars, Post Malone & More" 
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <!-- Graceful Fallback Preview if poster2.jpg is still loading/pending -->
+              <div class="hidden p-6 text-center flex flex-col items-center justify-center">
+                <img src="bloomlogo.png" alt="BLOOM" class="w-44 h-auto bloom-logo-blend mb-2" data-bloom-logo-img />
+                <p class="text-xs font-bold uppercase tracking-[0.18em] text-ink">March 20–21, 2027 • Sheep Meadow, NYC</p>
+                <p class="mt-3 font-serifDisplay text-base text-coralRose">SABRINA CARPENTER • JUSTIN BIBER • SZA</p>
+                <p class="mt-1 text-[11px] font-bold text-ink">BAD BUNNY • BRUNO MARS • POST MALONE • &amp; MORE</p>
+                <span class="mt-4 text-[11px] font-mono text-mutedInk bg-white/80 px-3 py-1 rounded-full border border-blushPink">poster2.jpg</span>
+              </div>
+
+              <!-- Subtle Hover Inspect Overlay -->
+              <div class="absolute inset-x-0 bottom-4 z-10 flex justify-center pointer-events-none">
+                <span class="inline-flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-sm border border-blushPink px-4 py-1.5 text-xs font-semibold text-ink shadow-md group-hover:bg-coralRose group-hover:text-white transition-colors">
+                  <span>Inspect Lineup Poster</span>
+                  <span>↗</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center justify-between px-2">
+            <div>
+              <h3 class="font-serifDisplay text-xl text-ink">Official Lineup Poster</h3>
+              <p class="text-xs text-mutedInk">Edition 02 • Full 2027 Artist Billing</p>
+            </div>
+            <a href="poster2.jpg" download="poster2.jpg" onclick="notifyPosterDownload('poster2.jpg')" class="rounded-full bg-buttercream hover:bg-blushPink text-ink border border-blushPink text-xs font-semibold px-4 py-2 transition-colors">
+              Download JPG
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       5. CENTRAL PARK EXPERIENCE (3-COLUMN EDITORIAL CARDS)
+       ========================================================= -->
+  <section id="experience" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#FFF4F8] border-b border-blushPink/70">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="inline-block rounded-full bg-buttercream/90 border border-blushPink px-3.5 py-1 text-xs font-bold uppercase tracking-[0.22em] text-ink">Sheep Meadow • Central Park</span>
+          <h2 class="mt-3 font-serifDisplay text-4xl sm:text-5xl text-ink">The Central Park Experience</h2>
+        </div>
+        <p class="max-w-md font-serifEditorial italic text-xl sm:text-2xl text-mutedInk">
+          Early-spring cherry blossoms, open-air meadow acoustics, and New York’s premier botanical art walk.
+        </p>
+      </div>
+
+      <!-- 3-Column Editorial Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card 1: Cherry Blossom Main Stage -->
+        <article class="group rounded-[2rem] bg-white border border-blushPink/90 shadow-editorial overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1.5">
+          <div class="relative h-64 overflow-hidden bg-gradient-to-br from-blushPink/60 via-buttercream/60 to-ivory">
+            <img 
+              src="https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=800&q=80" 
+              alt="Cherry Blossom Main Stage in Central Park" 
+              onerror="this.style.display='none'"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 rounded-full bg-buttercream/95 backdrop-blur-sm text-ink text-xs font-bold px-3.5 py-1">
+              01 • Sheep Meadow Lawn
+            </span>
+          </div>
+          <div class="p-7 sm:p-8 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serifDisplay text-2xl sm:text-3xl text-ink group-hover:text-coralRose transition-colors">
+                Cherry Blossom Main Stage
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-mutedInk leading-relaxed">
+                Set against Manhattan’s iconic midtown skyline on the sprawling 15-acre Sheep Meadow lawn, framed by blooming spring sakura canopies and concert-grade spatial sound.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-blushPink/70 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-sage">
+              <span>West 66th – 69th St</span>
+              <span>12 PM – 10 PM</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: The Botanical Sound Conservatory -->
+        <article class="group rounded-[2rem] bg-white border border-blushPink/90 shadow-editorial overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1.5">
+          <div class="relative h-64 overflow-hidden bg-gradient-to-br from-coralRose/30 via-buttercream/60 to-blushPink">
+            <img 
+              src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" 
+              alt="The Botanical Sound Conservatory" 
+              onerror="this.style.display='none'"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 rounded-full bg-white/95 backdrop-blur-sm text-coralRose text-xs font-bold px-3.5 py-1">
+              02 • Living Glasshouse
+            </span>
+          </div>
+          <div class="p-7 sm:p-8 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serifDisplay text-2xl sm:text-3xl text-ink group-hover:text-coralRose transition-colors">
+                The Botanical Sound Conservatory
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-mutedInk leading-relaxed">
+                An immersive architectural greenhouse pavilion filled with heirloom peonies, orchids, and acoustic foliage where intimate sets and bio-harmonic soundscapes bloom all afternoon.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-blushPink/70 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-coralRose">
+              <span>360° Spatial Audio</span>
+              <span>All Weekend</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Sunset Meadow Lounge & Art Walk -->
+        <article class="group rounded-[2rem] bg-white border border-blushPink/90 shadow-editorial overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1.5">
+          <div class="relative h-64 overflow-hidden bg-gradient-to-br from-buttercream/70 via-blushPink/55 to-sage/20">
+            <img 
+              src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80" 
+              alt="Sunset Meadow Lounge and Art Walk" 
+              onerror="this.style.display='none'"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 rounded-full bg-blushPink/95 backdrop-blur-sm text-ink text-xs font-bold px-3.5 py-1">
+              03 • Sculpture &amp; Culinary
+            </span>
+          </div>
+          <div class="p-7 sm:p-8 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serifDisplay text-2xl sm:text-3xl text-ink group-hover:text-coralRose transition-colors">
+                Sunset Meadow Lounge &amp; Art Walk
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-mutedInk leading-relaxed">
+                Stroll past oversized pastel floral sculptures by NYC botanical artists while enjoying curated local tastings, matcha &amp; botanical tea bars, and golden-hour picnic lounges.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-blushPink/70 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-ink">
+              <span>16 Floral Installations</span>
+              <span>NYC Culinary Pop-Ups</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       6. INTERACTIVE TICKET & PASS SELECTOR (MARCH 20-21, 2027)
+       ========================================================= -->
+  <section id="tickets" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#FFFAFA]">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="inline-block rounded-full bg-buttercream/90 border border-blushPink px-3.5 py-1 text-xs font-bold uppercase tracking-[0.22em] text-ink">March 20–21, 2027 • Tier 1 Release</span>
+        <h2 class="mt-3 font-serifDisplay text-4xl sm:text-5xl text-ink">Central Park Passes</h2>
+        <p class="mt-3 font-serifEditorial italic text-xl sm:text-2xl text-mutedInk">
+          Select your pass tier for Sheep Meadow, Central Park and customize quantities in our instant box office drawer.
+        </p>
+      </div>
+
+      <!-- 3 Editorial Ticket Tiers -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Tier 1: Saturday / Sunday Single-Day Bloom -->
+        <div class="rounded-[2rem] bg-white border border-blushPink p-8 flex flex-col justify-between shadow-sm hover:shadow-editorial transition-all">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-widest text-sage">Single Day</span>
+              <span class="rounded-full bg-[#FFF4F8] border border-blushPink px-3 py-1 text-xs text-mutedInk">Sat Mar 20 or Sun Mar 21</span>
+            </div>
+            <h3 class="mt-4 font-serifDisplay text-2xl sm:text-3xl text-ink">Single-Day Bloom</h3>
+            <p class="font-serifEditorial italic text-lg text-mutedInk">Saturday or Sunday General Admission</p>
+            <div class="mt-6 flex items-baseline gap-1">
+              <span class="font-serifDisplay text-4xl sm:text-5xl text-ink">$185</span>
+              <span class="text-xs text-mutedInk">+ fees / pass</span>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm text-mutedInk border-t border-blushPink/70 pt-6">
+              <li class="flex items-start gap-2.5">
+                <span class="text-sage font-bold">✓</span>
+                <span>1-Day entry to Sheep Meadow &amp; all 3 Central Park stages</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-sage font-bold">✓</span>
+                <span>Full access to Sunset Meadow Art Walk installations</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-sage font-bold">✓</span>
+                <span>Complimentary botanical water refill stations</span>
+              </li>
+            </ul>
+          </div>
+          <button onclick="openCheckoutModal('single')" class="mt-8 w-full rounded-full border-2 border-ink text-ink hover:bg-ink hover:text-buttercream font-semibold text-sm py-3.5 transition-colors">
+            Select Single-Day Pass
+          </button>
+        </div>
+
+        <!-- Tier 2: 2-Day Central Park Weekend Pass — Featured -->
+        <div class="rounded-[2rem] bg-white border-2 border-coralRose p-8 flex flex-col justify-between shadow-editorial relative md:-translate-y-2">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-coralRose text-white text-[11px] font-bold uppercase tracking-widest px-4 py-1 shadow-sm">
+            Most Popular
+          </div>
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-widest text-coralRose">Full Weekend</span>
+              <span class="rounded-full bg-blushPink/60 px-3 py-1 text-xs font-semibold text-ink">Mar 20–21, 2027</span>
+            </div>
+            <h3 class="mt-4 font-serifDisplay text-2xl sm:text-3xl text-ink">2-Day Central Park Pass</h3>
+            <p class="font-serifEditorial italic text-lg text-mutedInk">Full Weekend General Admission</p>
+            <div class="mt-6 flex items-baseline gap-1">
+              <span class="font-serifDisplay text-4xl sm:text-5xl text-ink">$335</span>
+              <span class="text-xs text-mutedInk">+ fees / pass</span>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm text-mutedInk border-t border-blushPink/70 pt-6">
+              <li class="flex items-start gap-2.5">
+                <span class="text-coralRose font-bold">✓</span>
+                <span>Both Saturday &amp; Sunday across all Sheep Meadow stages</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-coralRose font-bold">✓</span>
+                <span>Unlimited entry to The Botanical Sound Conservatory</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-coralRose font-bold">✓</span>
+                <span>Priority West 67th St Central Park gate access</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-coralRose font-bold">✓</span>
+                <span>Collectible pressed-blossom 2027 festival wristband</span>
+              </li>
+            </ul>
+          </div>
+          <button onclick="openCheckoutModal('weekend')" class="mt-8 w-full rounded-full bg-coralRose hover:bg-deepRose text-white font-semibold text-sm py-3.5 shadow-md transition-colors">
+            Select 2-Day Weekend Pass
+          </button>
+        </div>
+
+        <!-- Tier 3: Golden Petal VIP Meadow Pass -->
+        <div class="rounded-[2rem] bg-gradient-to-b from-white to-[#FFFEF2] border border-blushPink p-8 flex flex-col justify-between shadow-sm hover:shadow-editorial transition-all">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-widest text-ink">2-Day VIP</span>
+              <span class="rounded-full bg-buttercream px-3 py-1 text-xs font-semibold text-ink">Limited</span>
+            </div>
+            <h3 class="mt-4 font-serifDisplay text-2xl sm:text-3xl text-ink">Golden Petal VIP</h3>
+            <p class="font-serifEditorial italic text-lg text-mutedInk">2-Day VIP Meadow Sanctuary</p>
+            <div class="mt-6 flex items-baseline gap-1">
+              <span class="font-serifDisplay text-4xl sm:text-5xl text-ink">$645</span>
+              <span class="text-xs text-mutedInk">+ fees / pass</span>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm text-mutedInk border-t border-blushPink/70 pt-6">
+              <li class="flex items-start gap-2.5">
+                <span class="text-coralRose font-bold">✿</span>
+                <span>Front-of-meadow elevated viewing decks at Main Stage</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-coralRose font-bold">✿</span>
+                <span>Private Glasshouse VIP Lounge with botanical cocktail bar</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-coralRose font-bold">✿</span>
+                <span>Dedicated VIP Central Park entrance &amp; private restrooms</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-coralRose font-bold">✿</span>
+                <span>Complimentary floral crown bar &amp; limited screenprint poster</span>
+              </li>
+            </ul>
+          </div>
+          <button onclick="openCheckoutModal('vip')" class="mt-8 w-full rounded-full bg-buttercream hover:bg-blushPink text-ink border border-blushPink font-semibold text-sm py-3.5 transition-colors">
+            Select Golden Petal VIP
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FAQ ACCORDION SECTION
+       ========================================================= -->
+  <section id="faq" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#FFF4F8] border-t border-blushPink/60">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold uppercase tracking-[0.22em] text-coralRose">Plan Your Weekend</span>
+        <h2 class="mt-2 font-serifDisplay text-3xl sm:text-4xl text-ink">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="space-y-3" id="faq-container">
+        <details class="group rounded-2xl bg-white border border-blushPink p-5 open:shadow-sm transition-all">
+          <summary class="flex items-center justify-between cursor-pointer font-semibold text-ink list-none">
+            <span>Which Central Park entrances lead to Sheep Meadow for BLOOM?</span>
+            <span class="text-coralRose text-xl transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <p class="mt-3 text-sm text-mutedInk leading-relaxed">
+            Primary festival gates are located at West 67th Street &amp; Central Park West (near Tavern on the Green) and East 69th Street &amp; Fifth Avenue. Easy subway access via the A/B/C/D/1 lines to 59th St–Columbus Circle or B/C to 72nd St.
+          </p>
+        </details>
+
+        <details class="group rounded-2xl bg-white border border-blushPink p-5 open:shadow-sm transition-all">
+          <summary class="flex items-center justify-between cursor-pointer font-semibold text-ink list-none">
+            <span>What are the festival hours for March 20–21, 2027?</span>
+            <span class="text-coralRose text-xl transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <p class="mt-3 text-sm text-mutedInk leading-relaxed">
+            Gates open at 12:00 PM on both Saturday, March 20 and Sunday, March 21, 2027, with headliner performances concluding at 10:00 PM nightly in accordance with NYC Parks curfew guidelines.
+          </p>
+        </details>
+
+        <details class="group rounded-2xl bg-white border border-blushPink p-5 open:shadow-sm transition-all">
+          <summary class="flex items-center justify-between cursor-pointer font-semibold text-ink list-none">
+            <span>Is BLOOM Festival an all-ages event?</span>
+            <span class="text-coralRose text-xl transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <p class="mt-3 text-sm text-mutedInk leading-relaxed">
+            Yes! BLOOM welcomes music and botanical lovers of all ages. Children under 8 enter free with a ticketed adult, and dedicated 21+ botanical cocktail gardens require valid government photo ID.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       7. MINIMALIST FOOTER WITH ORIGINAL BLOOM LOGO & NEWSLETTER
+       ========================================================= -->
+  <footer class="bg-[#FFFAFA] border-t border-blushPink pt-16 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-14 border-b border-blushPink/90">
+        
+        <!-- Brand & Festival Info with Original Logo Lockup -->
+        <div class="md:col-span-5">
+          <a href="#top" class="inline-flex items-baseline gap-2.5 group" aria-label="BLOOM Top">
+            <img 
+              id="footer-floral-mark" 
+              src="bloomlogo.png" 
+              alt="BLOOM Festival Logo" 
+              class="h-12 sm:h-14 w-auto bloom-logo-blend transition-transform duration-300 group-hover:scale-105"
+              data-bloom-logo-img
+            />
+            <span class="text-xs font-bold uppercase tracking-[0.3em] text-coralRose">FESTIVAL</span>
+          </a>
+          <p class="mt-4 text-sm text-mutedInk max-w-sm leading-relaxed">
+            March 20–21, 2027 • Sheep Meadow, Central Park, New York City.<br/>
+            Supporting Central Park spring horticulture, sustainable live music, and botanical public art.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="md:col-span-3">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-ink mb-4">Festival</h4>
+          <ul class="space-y-2.5 text-sm text-mutedInk">
+            <li><a href="#lineup" class="hover:text-coralRose transition-colors">2027 Lineup</a></li>
+            <li><a href="#posters" class="hover:text-coralRose transition-colors">Official Posters</a></li>
+            <li><a href="#experience" class="hover:text-coralRose transition-colors">Sheep Meadow Map &amp; Art</a></li>
+            <li><a href="#tickets" class="hover:text-coralRose transition-colors">Passes &amp; VIP</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="md:col-span-4">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-ink mb-2">Join The Garden List</h4>
+          <p class="text-sm text-mutedInk mb-4">Receive daily set times, Central Park gate alerts, and secret conservatory sessions.</p>
+          <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2">
+            <input 
+              type="email" 
+              id="newsletter-email" 
+              required 
+              placeholder="you@domain.com" 
+              class="flex-1 rounded-full bg-white border border-blushPink px-4 py-2.5 text-sm text-ink placeholder:text-mutedInk/60 focus:outline-none focus:border-coralRose"
+            />
+            <button type="submit" class="rounded-full bg-ink hover:bg-coralRose text-buttercream hover:text-white text-xs font-semibold uppercase tracking-wider px-5 py-3 transition-colors">
+              Subscribe
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-mutedInk">
+        <p>© 2027 BLOOM Festival • Sheep Meadow, Central Park, New York City. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#top" class="hover:text-coralRose transition-colors">Central Park Conservancy Partner</a>
+          <a href="#top" class="hover:text-coralRose transition-colors">Accessibility</a>
+          <a href="#top" class="hover:text-coralRose transition-colors">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       LOCAL FILE LOADER PILL (FOR PREVIEWING bloomlogo.png IN SANDBOX)
+       ========================================================= -->
+  <div id="local-asset-loader" class="fixed bottom-6 left-6 z-[52]">
+    <label class="cursor-pointer inline-flex items-center gap-2 rounded-full bg-white/95 hover:bg-buttercream border border-blushPink shadow-editorial px-4 py-2 text-xs font-semibold text-ink transition-all">
+      <span class="w-2 h-2 rounded-full bg-coralRose"></span>
+      <span>Load Local <code class="font-mono text-coralRose">bloomlogo.png</code></span>
+      <input type="file" accept="image/*" class="hidden" onchange="handleLocalLogoUpload(event)" />
+    </label>
+  </div>
+
+  <!-- =========================================================
+       TOAST NOTIFICATION BANNER
+       ========================================================= -->
+  <div id="toast-banner" class="fixed bottom-6 right-6 z-[60] max-w-sm rounded-2xl bg-ink text-white px-5 py-4 shadow-xl border border-blushPink/50 flex items-center gap-3 translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <span class="w-6 h-6 rounded-full bg-buttercream text-ink flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+    <p id="toast-message" class="text-sm font-medium">Action completed!</p>
+  </div>
+
+  <!-- =========================================================
+       POSTER LIGHTBOX MODAL (poster1.jpg & poster2.jpg)
+       ========================================================= -->
+  <div id="poster-lightbox" class="fixed inset-0 z-[80] hidden items-center justify-center bg-ink/75 backdrop-blur-md p-4 sm:p-6">
+    <div class="relative w-full max-w-4xl max-h-[90vh] rounded-[2rem] bg-white border-2 border-blushPink shadow-editorial flex flex-col overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-blushPink/70 bg-[#FFF4F8]">
+        <h3 id="lightbox-title" class="font-serifDisplay text-lg sm:text-xl text-ink truncate pr-4">Official Poster</h3>
+        <div class="flex items-center gap-2 shrink-0">
+          <button id="lightbox-zoom-btn" onclick="togglePosterZoom()" class="rounded-full bg-white hover:bg-buttercream border border-blushPink px-3.5 py-1.5 text-xs font-semibold text-ink transition-colors">
+            Zoom In +
+          </button>
+          <a id="lightbox-download-link" href="poster1.jpg" download="poster1.jpg" class="rounded-full bg-coralRose hover:bg-deepRose text-white px-3.5 py-1.5 text-xs font-semibold transition-colors">
+            Download
+          </a>
+          <button onclick="closePosterLightbox()" aria-label="Close Poster Lightbox" class="w-8 h-8 rounded-full bg-white hover:bg-blushPink/50 border border-blushPink flex items-center justify-center text-ink font-bold transition-colors">
+            ✕
+          </button>
+        </div>
+      </div>
+      <div id="lightbox-body" class="flex-1 overflow-auto p-6 bg-bloom-mesh flex items-center justify-center"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       PASS CHECKOUT MODAL
+       ========================================================= -->
+  <div id="checkout-modal" class="fixed inset-0 z-[80] hidden items-center justify-center bg-ink/75 backdrop-blur-md p-4 sm:p-6">
+    <div class="relative w-full max-w-lg rounded-[2rem] bg-white border-2 border-blushPink shadow-editorial overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-5 border-b border-blushPink/70 bg-[#FFF4F8]">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-coralRose">March 20–21, 2027 • Central Park</span>
+          <h3 class="font-serifDisplay text-2xl text-ink">Reserve Festival Passes</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" aria-label="Close Checkout" class="w-9 h-9 rounded-full bg-white hover:bg-blushPink/50 border border-blushPink flex items-center justify-center text-ink font-bold transition-colors">
+          ✕
+        </button>
+      </div>
+
+      <div class="p-6 space-y-4">
+        <!-- Single-Day Pass -->
+        <div class="flex items-center justify-between rounded-2xl bg-[#FFF4F8] border border-blushPink p-4">
+          <div>
+            <p class="font-serifDisplay text-lg text-ink">Single-Day Bloom</p>
+            <p class="text-xs text-mutedInk">$185 / pass • Sat Mar 20 or Sun Mar 21</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="updateQty('single', -1)" class="w-8 h-8 rounded-full bg-white border border-blushPink font-bold text-ink hover:bg-blushPink/40">−</button>
+            <span id="qty-single" class="w-5 text-center font-bold text-sm text-ink">0</span>
+            <button onclick="updateQty('single', 1)" class="w-8 h-8 rounded-full bg-white border border-blushPink font-bold text-ink hover:bg-blushPink/40">+</button>
+          </div>
+        </div>
+
+        <!-- 2-Day Weekend Pass -->
+        <div class="flex items-center justify-between rounded-2xl bg-[#FFF4F8] border-2 border-coralRose p-4">
+          <div>
+            <p class="font-serifDisplay text-lg text-ink">2-Day Central Park Pass</p>
+            <p class="text-xs text-mutedInk">$335 / pass • Full Weekend GA</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="updateQty('weekend', -1)" class="w-8 h-8 rounded-full bg-white border border-blushPink font-bold text-ink hover:bg-blushPink/40">−</button>
+            <span id="qty-weekend" class="w-5 text-center font-bold text-sm text-ink">1</span>
+            <button onclick="updateQty('weekend', 1)" class="w-8 h-8 rounded-full bg-white border border-blushPink font-bold text-ink hover:bg-blushPink/40">+</button>
+          </div>
+        </div>
+
+        <!-- Golden Petal VIP -->
+        <div class="flex items-center justify-between rounded-2xl bg-[#FFFEF2] border border-blushPink p-4">
+          <div>
+            <p class="font-serifDisplay text-lg text-ink">Golden Petal VIP</p>
+            <p class="text-xs text-mutedInk">$645 / pass • 2-Day VIP Sanctuary</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="updateQty('vip', -1)" class="w-8 h-8 rounded-full bg-white border border-blushPink font-bold text-ink hover:bg-blushPink/40">−</button>
+            <span id="qty-vip" class="w-5 text-center font-bold text-sm text-ink">0</span>
+            <button onclick="updateQty('vip', 1)" class="w-8 h-8 rounded-full bg-white border border-blushPink font-bold text-ink hover:bg-blushPink/40">+</button>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="pt-3 border-t border-blushPink/70 space-y-1.5 text-sm">
+          <div class="flex justify-between text-mutedInk">
+            <span>Selected (<span id="total-passes">1 pass</span>)</span>
+            <span id="checkout-subtotal">$335.00</span>
+          </div>
+          <div class="flex justify-between text-mutedInk">
+            <span>NYC Parks &amp; Service Fees (8%)</span>
+            <span id="checkout-fees">$26.80</span>
+          </div>
+          <div class="flex justify-between font-bold text-base text-ink pt-2 border-t border-blushPink/50">
+            <span>Total</span>
+            <span id="checkout-total">$361.80</span>
+          </div>
+        </div>
+
+        <button id="confirm-order-btn" onclick="completeReservation()" class="w-full rounded-full bg-coralRose hover:bg-deepRose text-white font-semibold text-sm py-3.5 shadow-md transition-all">
+          Confirm Pass Reservation
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT: INTERACTIVITY, AUDIO SYNTH, PARTICLES & STATE
+       ========================================================= -->
+  <script>
+    // Allow selecting your local bloomlogo.png file directly in the preview
+    function handleLocalLogoUpload(event) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      const objectUrl = URL.createObjectURL(file);
+      document.querySelectorAll('[data-bloom-logo-img]').forEach(img => {
+        img.src = objectUrl;
+      });
+      showToast(`Loaded "${file.name}" across the entire page!`);
+    }
+
+    // ---------------------------------------------------------
+    // 5B. POSTER LIGHTBOX & DIRECT JPG DOWNLOAD (poster1.jpg & poster2.jpg)
+    // ---------------------------------------------------------
+    const posterLightbox = document.getElementById('poster-lightbox');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxBody = document.getElementById('lightbox-body');
+    const lightboxDownloadLink = document.getElementById('lightbox-download-link');
+    const lightboxZoomBtn = document.getElementById('lightbox-zoom-btn');
+    let isPosterZoomed = false;
+
+    function openPosterLightbox(type) {
+      isPosterZoomed = false;
+      lightboxZoomBtn.textContent = 'Zoom In +';
+
+      if (type === 'main') {
+        lightboxTitle.textContent = 'Main Festival Poster — poster1.jpg (March 20–21, 2027)';
+        lightboxDownloadLink.href = 'poster1.jpg';
+        lightboxDownloadLink.setAttribute('download', 'poster1.jpg');
+        lightboxBody.innerHTML = `
+          <div class="w-full flex flex-col items-center justify-center">
+            <img 
+              id="lightbox-poster-img"
+              src="poster1.jpg" 
+              alt="BLOOM Festival Main Announcement Poster (poster1.jpg)" 
+              onclick="togglePosterZoom()"
+              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+              class="max-h-[72vh] w-auto rounded-2xl shadow-editorial border border-blushPink cursor-zoom-in transition-all duration-300"
+            />
+            <div class="hidden p-10 text-center bg-bloom-mesh rounded-2xl border border-blushPink">
+              <img src="bloomlogo.png" alt="BLOOM" class="w-72 mx-auto bloom-logo-blend mb-2" data-bloom-logo-img />
+              <p class="text-sm font-bold uppercase tracking-[0.4em] text-coralRose">FESTIVAL</p>
+              <p class="mt-4 font-serifDisplay text-2xl text-ink">March 20–21, 2027</p>
+              <p class="font-serifEditorial italic text-xl text-mutedInk">Sheep Meadow, Central Park, New York City</p>
+              <p class="mt-3 text-xs font-mono text-mutedInk">File: poster1.jpg</p>
+            </div>
+          </div>
+        `;
+      } else {
+        lightboxTitle.textContent = 'Official Lineup Poster — poster2.jpg (March 20–21, 2027)';
+        lightboxDownloadLink.href = 'poster2.jpg';
+        lightboxDownloadLink.setAttribute('download', 'poster2.jpg');
+        lightboxBody.innerHTML = `
+          <div class="w-full flex flex-col items-center justify-center">
+            <img 
+              id="lightbox-poster-img"
+              src="poster2.jpg" 
+              alt="BLOOM Festival Official Lineup Poster (poster2.jpg)" 
+              onclick="togglePosterZoom()"
+              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+              class="max-h-[72vh] w-auto rounded-2xl shadow-editorial border border-blushPink cursor-zoom-in transition-all duration-300"
+            />
+            <div class="hidden p-8 text-center bg-white rounded-2xl border border-blushPink">
+              <img src="bloomlogo.png" alt="BLOOM" class="w-56 mx-auto bloom-logo-blend mb-2" data-bloom-logo-img />
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-ink">March 20–21, 2027 • Sheep Meadow, Central Park, NYC</p>
+              <p class="mt-4 font-serifDisplay text-xl text-coralRose">SABRINA CARPENTER • JUSTIN BIBER • SZA</p>
+              <p class="mt-2 font-serifDisplay text-base text-ink">ENHYPEN • BAD BUNNY • CLARIO • SOMBR • CALVIN HARRIS • ZARA LARSON • TYLA • TXT • BRUNO MARS • POST MALONE &amp; MORE</p>
+              <p class="mt-3 text-xs font-mono text-mutedInk">File: poster2.jpg</p>
+            </div>
+          </div>
+        `;
+      }
+
+      posterLightbox.classList.remove('hidden');
+      posterLightbox.classList.add('flex');
+    }
+
+    function togglePosterZoom() {
+      const img = document.getElementById('lightbox-poster-img');
+      if (!img) return;
+      isPosterZoomed = !isPosterZoomed;
+      if (isPosterZoomed) {
+        img.classList.remove('max-h-[72vh]', 'w-auto', 'cursor-zoom-in');
+        img.classList.add('w-full', 'max-w-3xl', 'h-auto', 'cursor-zoom-out');
+        lightboxZoomBtn.textContent = 'Fit to Screen −';
+      } else {
+        img.classList.add('max-h-[72vh]', 'w-auto', 'cursor-zoom-in');
+        img.classList.remove('w-full', 'max-w-3xl', 'h-auto', 'cursor-zoom-out');
+        lightboxZoomBtn.textContent = 'Zoom In +';
+      }
+    }
+
+    function closePosterLightbox() {
+      if (!posterLightbox) return;
+      posterLightbox.classList.add('hidden');
+      posterLightbox.classList.remove('flex');
+      isPosterZoomed = false;
+    }
+
+    function notifyPosterDownload(filename) {
+      showToast(`Saving official poster (${filename})...`);
+    }
+
+    if (posterLightbox) {
+      posterLightbox.addEventListener('click', (e) => {
+        if (e.target === posterLightbox) closePosterLightbox();
+      });
+    }
+
+    // ---------------------------------------------------------
+    // 1. SPLASH SCREEN & NAVIGATION LOGIC
+    // ---------------------------------------------------------
+    const splashScreen = document.getElementById('splash-screen');
+    const skipSplashBtn = document.getElementById('skip-splash');
+
+    function dismissSplash() {
+      if (splashScreen) {
+        splashScreen.classList.add('fade-out');
+      }
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(dismissSplash, 1350);
+    });
+
+    if (skipSplashBtn) {
+      skipSplashBtn.addEventListener('click', dismissSplash);
+    }
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // Subtle Scroll-Reactive Halo behind the BLOOM logo
+    const heroFloralEmblem = document.getElementById('hero-floral-emblem');
+    const footerFloralMark = document.getElementById('footer-floral-mark');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (heroFloralEmblem) {
+        const scale = 1 + Math.min(scrollY * 0.0002, 0.12);
+        heroFloralEmblem.style.transform = `scale(${scale})`;
+      }
+    }, { passive: true });
+
+    // ---------------------------------------------------------
+    // 2. FLOATING BUBBLEGUM & BUTTERCREAM PETAL PARTICLE CANVAS
+    // ---------------------------------------------------------
+    const canvas = document.getElementById('petal-canvas');
+    const ctx = canvas.getContext('2d');
+    let petals = [];
+
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Colors sampled directly from the custom BLOOM logo PNG
+    const petalColors = [
+      'rgba(246, 179, 213, 0.55)', // Bubblegum Petal Pink
+      'rgba(250, 245, 158, 0.65)', // Buttercream Center Yellow
+      'rgba(248, 182, 216, 0.48)', // Soft Rose Pink
+      'rgba(216, 92, 138, 0.25)'   // Coral Rose Accent
+    ];
+
+    class Petal {
+      constructor() {
+        this.reset(true);
+      }
+      reset(initial = false) {
+        this.x = Math.random() * canvas.width;
+        this.y = initial ? Math.random() * canvas.height : -20;
+        this.size = 6 + Math.random() * 10;
+        this.speedY = 0.35 + Math.random() * 0.65;
+        this.speedX = -0.3 + Math.random() * 0.6;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotSpeed = (Math.random() - 0.5) * 0.015;
+        this.wobble = Math.random() * Math.PI * 2;
+        this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+      }
+      update() {
+        this.y += this.speedY;
+        this.wobble += 0.02;
+        this.x += this.speedX + Math.sin(this.wobble) * 0.35;
+        this.rotation += this.rotSpeed;
+        if (this.y > canvas.height + 25) {
+          this.reset(false);
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(0, -this.size);
+        ctx.bezierCurveTo(this.size * 0.85, -this.size * 0.4, this.size * 0.85, this.size * 0.6, 0, this.size);
+        ctx.bezierCurveTo(-this.size * 0.85, this.size * 0.6, -this.size * 0.85, -this.size * 0.4, 0, -this.size);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function initPetals() {
+      const count = window.innerWidth < 640 ? 18 : 34;
+      petals = Array.from({ length: count }, () => new Petal());
+    }
+    initPetals();
+
+    function animatePetals() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const petal of petals) {
+        petal.update();
+        petal.draw();
+      }
+      requestAnimationFrame(animatePetals);
+    }
+    animatePetals();
+
+    // ---------------------------------------------------------
+    // 3. COMPLETE 2027 LINEUP DATA (FROM POSTER3.PDF)
+    // ---------------------------------------------------------
+    const artistsData = [
+      // HEADLINERS (Row 1-3 of poster3.pdf)
+      {
+        id: 'sabrina-carpenter',
+        name: 'SABRINA CARPENTER',
+        tier: 'headliner',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Pop & R&B',
+        stage: 'Cherry Blossom Main',
+        time: '8:45 PM – 10:00 PM',
+        bio: 'Sparkling theatrical pop hooks, vintage glamour, and a custom floral stage production under the Central Park skyline.',
+        vibes: ['Golden-Hour Pop', 'Live Strings'],
+        notes: ['C5', 'E5', 'G5', 'B5', 'D6'],
+        image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'justin-bieber',
+        name: 'JUSTIN BIBER',
+        tier: 'headliner',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Pop & R&B',
+        stage: 'Cherry Blossom Main',
+        time: '7:00 PM – 8:15 PM',
+        bio: 'Chart-topping R&B-pop anthems and soulful stripped-back vocal arrangements across Sheep Meadow.',
+        vibes: ['Arena R&B-Pop', 'Full Live Band'],
+        notes: ['F4', 'A4', 'C5', 'E5', 'G5'],
+        image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'sza',
+        name: 'SZA',
+        tier: 'headliner',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Pop & R&B',
+        stage: 'Cherry Blossom Main',
+        time: '8:45 PM – 10:00 PM',
+        bio: 'Lush botanical R&B storytelling and ethereal twilight vocals closing out BLOOM Festival in Central Park.',
+        vibes: ['Velvet R&B', 'Twilight Headliner'],
+        notes: ['D4', 'F4', 'A4', 'C5', 'E5'],
+        image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80'
+      },
+
+      // SUB-HEADLINERS / FEATURED (Rows 4-7 of poster3.pdf)
+      {
+        id: 'enhypen',
+        name: 'ENHYPEN',
+        tier: 'subheadliner',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'K-Pop & Global',
+        stage: 'Cherry Blossom Main',
+        time: '5:30 PM – 6:30 PM',
+        bio: 'High-precision choreography and kinetic pop-rock spectacle lighting up Saturday afternoon in Manhattan.',
+        vibes: ['Dynamic Choreography', 'K-Pop Anthems'],
+        notes: ['E4', 'G#4', 'B4', 'D#5', 'F#5'],
+        image: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'bad-bunny',
+        name: 'BAD BUNNY',
+        tier: 'subheadliner',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Latin & Hip-Hop',
+        stage: 'Cherry Blossom Main',
+        time: '7:00 PM – 8:15 PM',
+        bio: 'Perreo euphoria, Caribbean percussion, and stadium-sized energy echoing across Central Park.',
+        vibes: ['Urbano Global', 'Sunset Party'],
+        notes: ['G4', 'B4', 'D5', 'F#5', 'A5'],
+        image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'clario',
+        name: 'CLARIO',
+        tier: 'subheadliner',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Indie & Alt',
+        stage: 'Botanical Conservatory',
+        time: '6:15 PM – 7:15 PM',
+        bio: 'Warm analog bedroom-pop melodies, flute harmonies, and golden-hour intimacy inside the Glasshouse.',
+        vibes: ['Soft Indie', 'Analog Warmth'],
+        notes: ['C4', 'E4', 'G4', 'B4', 'D5'],
+        image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'sombr',
+        name: 'SOMBR',
+        tier: 'subheadliner',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Indie & Alt',
+        stage: 'Botanical Conservatory',
+        time: '4:45 PM – 5:45 PM',
+        bio: 'New York native alt-pop romanticism with soaring falsetto and shimmering guitar textures.',
+        vibes: ['NYC Alt-Pop', 'Dreamy'],
+        notes: ['A4', 'C5', 'E5', 'G5', 'B5'],
+        image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'calvin-harris',
+        name: 'CALVIN HARRIS',
+        tier: 'subheadliner',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Electronic & Dance',
+        stage: 'Sunset Meadow Stage',
+        time: '7:30 PM – 8:45 PM',
+        bio: 'Euphoric mainstage house drops and timeless dance-pop classics beneath the spring dusk.',
+        vibes: ['Euphoric House', 'Festival Classics'],
+        notes: ['F4', 'A4', 'C5', 'F5', 'A5'],
+        image: 'https://images.unsplash.com/photo-1571266028243-d220c6a6db90?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'zara-larson',
+        name: 'ZARA LARSON',
+        tier: 'subheadliner',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Pop & R&B',
+        stage: 'Sunset Meadow Stage',
+        time: '5:45 PM – 6:45 PM',
+        bio: 'Scandinavian dance-pop powerhouse bringing soaring vocals and unstoppable festival momentum.',
+        vibes: ['Dance-Pop', 'High Energy'],
+        notes: ['D4', 'F#4', 'A4', 'C#5', 'E5'],
+        image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'tyla',
+        name: 'TYLA',
+        tier: 'subheadliner',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Pop & R&B',
+        stage: 'Cherry Blossom Main',
+        time: '5:15 PM – 6:15 PM',
+        bio: 'Sultry amapiano-infused pop rhythms and hypnotic choreography in the afternoon Central Park sun.',
+        vibes: ['Popiano', 'Sun-Kissed'],
+        notes: ['G4', 'B4', 'D5', 'F5', 'A5'],
+        image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'txt',
+        name: 'TXT',
+        tier: 'subheadliner',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'K-Pop & Global',
+        stage: 'Cherry Blossom Main',
+        time: '3:45 PM – 4:45 PM',
+        bio: 'TOMORROW X TOGETHER bring anthemic pop-punk energy and dazzling visual storytelling.',
+        vibes: ['K-Pop Rock', 'Anthemic'],
+        notes: ['E4', 'G4', 'B4', 'D5', 'F#5'],
+        image: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'adela',
+        name: 'ADÉLA',
+        tier: 'subheadliner',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Pop & R&B',
+        stage: 'Botanical Conservatory',
+        time: '3:30 PM – 4:15 PM',
+        bio: 'Sleek avant-pop drama and razor-sharp choreography ushering in the afternoon bloom.',
+        vibes: ['Avant-Pop', 'Theatrical'],
+        notes: ['C4', 'D#4', 'G4', 'A#4', 'D5'],
+        image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'tate-mcrae',
+        name: 'TATE MCRAE',
+        tier: 'subheadliner',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Pop & R&B',
+        stage: 'Cherry Blossom Main',
+        time: '4:00 PM – 5:00 PM',
+        bio: 'Electrifying pop hooks and athletic dance breaks commanding the Sheep Meadow main stage.',
+        vibes: ['Alt-Pop Dance', 'Kinetic'],
+        notes: ['A4', 'C5', 'E5', 'G5', 'A5'],
+        image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'bebe-rexha',
+        name: 'BEBE REXHA',
+        tier: 'subheadliner',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Pop & R&B',
+        stage: 'Sunset Meadow Stage',
+        time: '4:30 PM – 5:30 PM',
+        bio: 'Brooklyn-born powerhouse vocals and dance-floor singalongs back in her hometown.',
+        vibes: ['NYC Homecoming', 'Dance-Pop'],
+        notes: ['F4', 'A4', 'C5', 'E5', 'G5'],
+        image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'raye',
+        name: 'RAYE',
+        tier: 'subheadliner',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Pop & R&B',
+        stage: 'Botanical Conservatory',
+        time: '6:30 PM – 7:30 PM',
+        bio: 'Show-stopping brass arrangements, jazz-infused soul, and breathtaking vocal virtuosity.',
+        vibes: ['Orchestral Soul', 'Live Brass'],
+        notes: ['D4', 'F4', 'A4', 'C5', 'E5'],
+        image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80'
+      },
+
+      // SUPPORTING / SPECIAL GUESTS (Rows 8-14 of poster3.pdf)
+      {
+        id: 'daniel-caser',
+        name: 'DANIEL CASER',
+        tier: 'supporting',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Pop & R&B',
+        stage: 'Botanical Conservatory',
+        time: '7:45 PM – 8:45 PM',
+        bio: 'Velvety nocturnal R&B ballads glowing amid candlelit orchids and evening mist.',
+        vibes: ['Velvet R&B', 'Intimate'],
+        notes: ['C4', 'E4', 'G4', 'B4', 'D5'],
+        image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'karol-g',
+        name: 'KAROL G',
+        tier: 'supporting',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Latin & Hip-Hop',
+        stage: 'Sunset Meadow Stage',
+        time: '6:00 PM – 7:00 PM',
+        bio: 'La Bichota brings vibrant pastel fiesta energy and Latin global smash hits to Sheep Meadow.',
+        vibes: ['Latin Fiesta', 'Vibrant'],
+        notes: ['G4', 'B4', 'D5', 'F#5', 'A5'],
+        image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'doechii',
+        name: 'DOECHII',
+        tier: 'supporting',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Latin & Hip-Hop',
+        stage: 'Sunset Meadow Stage',
+        time: '6:00 PM – 7:00 PM',
+        bio: 'Fearless, theatrical hip-hop virtuosity and electric stage command.',
+        vibes: ['Avant Hip-Hop', 'Electric'],
+        notes: ['E4', 'G4', 'B4', 'D5', 'E5'],
+        image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'laufey',
+        name: 'LAUFEY',
+        tier: 'supporting',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Indie & Alt',
+        stage: 'Botanical Conservatory',
+        time: '3:15 PM – 4:15 PM',
+        bio: 'Bossa-nova strings, classic jazz romance, and cello melodies tailored for Central Park blossoms.',
+        vibes: ['Chamber Jazz', 'Blossom Waltz'],
+        notes: ['F4', 'A4', 'C5', 'E5', 'G5'],
+        image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'beabadoobee',
+        name: 'BEABADOOBEE',
+        tier: 'supporting',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Indie & Alt',
+        stage: 'Botanical Conservatory',
+        time: '4:45 PM – 5:45 PM',
+        bio: '90s-kissed fuzzy indie rock and sweet daydream melodies.',
+        vibes: ['Indie Rock', 'Sunlit'],
+        notes: ['D4', 'F#4', 'A4', 'C#5', 'E5'],
+        image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'john-summit',
+        name: 'JOHN SUMMIT',
+        tier: 'supporting',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Electronic & Dance',
+        stage: 'Sunset Meadow Stage',
+        time: '7:30 PM – 8:45 PM',
+        bio: 'Tech-house euphoria and sunset hands-in-the-air grooves across Manhattan.',
+        vibes: ['Tech House', 'Sunset Peak'],
+        notes: ['C4', 'G4', 'A#4', 'D5', 'F5'],
+        image: 'https://images.unsplash.com/photo-1571266028243-d220c6a6db90?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'katseye',
+        name: 'KATSEYE',
+        tier: 'supporting',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'K-Pop & Global',
+        stage: 'Sunset Meadow Stage',
+        time: '3:00 PM – 3:45 PM',
+        bio: 'Global girl-group harmonies and infectious pop choreography.',
+        vibes: ['Global Pop', 'Girl Group'],
+        notes: ['E4', 'G#4', 'B4', 'E5', 'G#5'],
+        image: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'jonas-brothers',
+        name: 'JONAS BROTHERS',
+        tier: 'supporting',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Pop & R&B',
+        stage: 'Cherry Blossom Main',
+        time: '2:30 PM – 3:30 PM',
+        bio: 'Joyful pop-rock nostalgia and horn-driven singalongs for the whole meadow.',
+        vibes: ['Pop-Rock', 'Singalong'],
+        notes: ['G4', 'B4', 'D5', 'G5', 'B5'],
+        image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'teddy-swims',
+        name: 'TEDDY SWIMS',
+        tier: 'supporting',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Pop & R&B',
+        stage: 'Cherry Blossom Main',
+        time: '2:15 PM – 3:15 PM',
+        bio: 'Gritty southern-soul powerhouse vocals and heartfelt pop anthems.',
+        vibes: ['Modern Soul', 'Power Vocals'],
+        notes: ['A4', 'C#5', 'E5', 'G#5', 'B5'],
+        image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'cortis',
+        name: 'CORTIS',
+        tier: 'supporting',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Electronic & Dance',
+        stage: 'Botanical Conservatory',
+        time: '2:00 PM – 3:00 PM',
+        bio: 'Hypnotic organic house and shimmering spring synth textures.',
+        vibes: ['Organic House', 'Botanical'],
+        notes: ['D4', 'F4', 'A4', 'C5', 'E5'],
+        image: 'https://images.unsplash.com/photo-1571266028243-d220c6a6db90?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'don-toliver',
+        name: 'DON TOLIVER',
+        tier: 'supporting',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Latin & Hip-Hop',
+        stage: 'Sunset Meadow Stage',
+        time: '4:15 PM – 5:15 PM',
+        bio: 'Psychedelic melodic trap and atmospheric basslines rolling across Central Park.',
+        vibes: ['Melodic Trap', 'Psychedelic'],
+        notes: ['C4', 'D#4', 'G4', 'A#4', 'D5'],
+        image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'bruno-mars',
+        name: 'BRUNO MARS',
+        tier: 'supporting',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Pop & R&B',
+        stage: 'Cherry Blossom Main',
+        time: '6:15 PM – 6:55 PM',
+        bio: 'Special golden-hour silk-sonic funk showcase with the Hooligans live band.',
+        vibes: ['24K Funk', 'Special Sunset Set'],
+        notes: ['F4', 'A4', 'C5', 'E5', 'G5'],
+        image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'post-malone',
+        name: 'POST MALONE',
+        tier: 'supporting',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'Latin & Hip-Hop',
+        stage: 'Cherry Blossom Main',
+        time: '6:30 PM – 7:00 PM',
+        bio: 'Special sunset acoustic-meets-arena hits set in the heart of New York City.',
+        vibes: ['Sunset Crossover', 'Special Guest'],
+        notes: ['G4', 'B4', 'D5', 'F#5', 'A5'],
+        image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: '5-seconds-of-summer',
+        name: '5 SECONDS OF SUMMER',
+        tier: 'supporting',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Indie & Alt',
+        stage: 'Sunset Meadow Stage',
+        time: '3:00 PM – 4:00 PM',
+        bio: 'High-octane pop-rock anthems and shimmering synth-wave hooks.',
+        vibes: ['Pop-Rock', 'Festival Anthems'],
+        notes: ['E4', 'G#4', 'B4', 'D#5', 'F#5'],
+        image: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'pitbull',
+        name: 'PITBULL',
+        tier: 'supporting',
+        day: 'sunday',
+        dayLabel: 'Sunday · Mar 21',
+        genre: 'Latin & Hip-Hop',
+        stage: 'Sunset Meadow Stage',
+        time: '1:45 PM – 2:45 PM',
+        bio: 'Mr. Worldwide turns Sunday afternoon into an unstoppable Manhattan block party.',
+        vibes: ['Global Party', 'Nonstop Hits'],
+        notes: ['C4', 'E4', 'G4', 'C5', 'E5'],
+        image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'lisa',
+        name: 'LISA',
+        tier: 'supporting',
+        day: 'saturday',
+        dayLabel: 'Saturday · Mar 20',
+        genre: 'K-Pop & Global',
+        stage: 'Cherry Blossom Main',
+        time: '1:30 PM – 2:15 PM',
+        bio: 'Global pop icon bringing fierce choreography and runway-caliber spectacle.',
+        vibes: ['Global Superstar', 'Pop Icon'],
+        notes: ['D4', 'F#4', 'A4', 'D5', 'F#5'],
+        image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80'
+      }
+    ];
+
+    let activeDay = 'all';
+    let activeGenre = 'all';
+    let lineupViewMode = 'poster';
+    let selectedArtistId = artistsData[0].id;
+
+    // ---------------------------------------------------------
+    // 4. LINEUP RENDERING & DUAL-VIEW FILTERING
+    // ---------------------------------------------------------
+    function setLineupViewMode(mode) {
+      lineupViewMode = mode;
+      const posterView = document.getElementById('lineup-poster-view');
+      const gridView = document.getElementById('lineup-grid-view');
+      const btnPoster = document.getElementById('view-poster-btn');
+      const btnGrid = document.getElementById('view-grid-btn');
+
+      if (mode === 'poster') {
+        posterView.classList.remove('hidden');
+        gridView.classList.add('hidden');
+        btnPoster.classList.add('bg-coralRose', 'text-white');
+        btnPoster.classList.remove('text-mutedInk');
+        btnGrid.classList.remove('bg-coralRose', 'text-white');
+        btnGrid.classList.add('text-mutedInk');
+      } else {
+        posterView.classList.add('hidden');
+        gridView.classList.remove('hidden');
+        btnGrid.classList.add('bg-coralRose', 'text-white');
+        btnGrid.classList.remove('text-mutedInk');
+        btnPoster.classList.remove('bg-coralRose', 'text-white');
+        btnPoster.classList.add('text-mutedInk');
+      }
+    }
+
+    function renderLineup() {
+      const filtered = artistsData.filter(artist => {
+        const matchesDay = activeDay === 'all' || artist.day === activeDay;
+        const matchesGenre = activeGenre === 'all' || artist.genre === activeGenre;
+        return matchesDay && matchesGenre;
+      });
+
+      const emptyState = document.getElementById('lineup-empty');
+      const posterView = document.getElementById('lineup-poster-view');
+      const gridView = document.getElementById('lineup-grid-view');
+
+      if (filtered.length === 0) {
+        posterView.classList.add('hidden');
+        gridView.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      if (lineupViewMode === 'poster') {
+        posterView.classList.remove('hidden');
+        gridView.classList.add('hidden');
+      } else {
+        posterView.classList.add('hidden');
+        gridView.classList.remove('hidden');
+      }
+
+      // Render Official Poster Tiers
+      const headliners = filtered.filter(a => a.tier === 'headliner');
+      const subheadliners = filtered.filter(a => a.tier === 'subheadliner');
+      const supporting = filtered.filter(a => a.tier === 'supporting');
+
+      document.getElementById('tier-headliners').classList.toggle('hidden', headliners.length === 0);
+      document.getElementById('tier-subheadliners').classList.toggle('hidden', subheadliners.length === 0);
+      document.getElementById('tier-supporting').classList.toggle('hidden', supporting.length === 0);
+
+      document.getElementById('headliners-list').innerHTML = headliners.map(a => `
+        <button onclick="selectArtist('${a.id}')" class="artist-item font-serifDisplay text-2xl sm:text-4xl md:text-[2.6rem] leading-tight tracking-tight px-3 py-1 rounded-2xl transition-all ${a.id === selectedArtistId ? 'text-coralRose bg-buttercream/85 shadow-sm' : 'text-ink hover:text-coralRose'}">
+          ${a.name}
+        </button>
+      `).join('');
+
+      document.getElementById('subheadliners-list').innerHTML = subheadliners.map((a, idx) => `
+        <button onclick="selectArtist('${a.id}')" class="artist-item font-serifDisplay text-lg sm:text-xl md:text-2xl px-2.5 py-0.5 rounded-xl transition-all ${a.id === selectedArtistId ? 'text-coralRose bg-buttercream/85 font-semibold' : 'text-ink hover:text-coralRose'}">
+          ${a.name}
+        </button>
+        ${idx < subheadliners.length - 1 ? '<span class="text-blushPink text-sm select-none">✿</span>' : ''}
+      `).join('');
+
+      document.getElementById('supporting-list').innerHTML = supporting.map((a, idx) => `
+        <button onclick="selectArtist('${a.id}')" class="artist-item font-sans font-semibold text-xs sm:text-sm md:text-base tracking-wide px-2 py-0.5 rounded-lg transition-all ${a.id === selectedArtistId ? 'text-coralRose bg-buttercream/85' : 'text-mutedInk hover:text-coralRose'}">
+          ${a.name}
+        </button>
+        ${idx < supporting.length - 1 ? '<span class="text-blushPink text-xs select-none">•</span>' : ''}
+      `).join('');
+
+      // Render Interactive Grid Cards
+      document.getElementById('artist-cards-grid').innerHTML = filtered.map(a => {
+        const isSelected = a.id === selectedArtistId;
+        return `
+          <button onclick="selectArtist('${a.id}')" class="text-left rounded-2xl p-4 border transition-all flex items-center justify-between gap-3 ${isSelected ? 'bg-[#FFF4F8] border-coralRose shadow-sm' : 'bg-white border-blushPink/80 hover:border-coralRose/60'}">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-coralRose">${a.dayLabel}</span>
+                <span class="text-[10px] text-mutedInk">• ${a.stage}</span>
+              </div>
+              <p class="font-serifDisplay text-lg text-ink mt-0.5">${a.name}</p>
+            </div>
+            <span class="shrink-0 rounded-full bg-buttercream/90 px-2.5 py-1 text-[10px] font-semibold text-ink">${a.genre}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectArtist(id) {
+      selectedArtistId = id;
+      const artist = artistsData.find(a => a.id === id);
+      if (!artist) return;
+
+      document.getElementById('preview-image').src = artist.image;
+      document.getElementById('preview-day-badge').textContent = artist.dayLabel;
+      document.getElementById('preview-genre-badge').textContent = artist.genre;
+      document.getElementById('preview-tier-label').textContent = artist.tier === 'headliner' ? 'Headliner' : artist.tier === 'subheadliner' ? 'Featured Performer' : 'Special Guest';
+      document.getElementById('preview-name').textContent = artist.name;
+      document.getElementById('preview-stage').textContent = artist.stage;
+      document.getElementById('preview-time').textContent = artist.time;
+      document.getElementById('preview-bio').textContent = artist.bio;
+
+      const vibesContainer = document.getElementById('preview-vibes');
+      vibesContainer.innerHTML = artist.vibes.map(v => `
+        <span class="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-buttercream/85 text-ink">${v}</span>
+      `).join('');
+
+      renderLineup();
+
+      if (isPlayingVibe) {
+        stopVibeAudio();
+        startVibeAudio();
+      }
+    }
+
+    document.querySelectorAll('.day-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.day-tab').forEach(b => {
+          b.classList.remove('active', 'bg-ink', 'text-buttercream', 'font-semibold', 'shadow-petal');
+          b.classList.add('bg-white', 'text-ink', 'border', 'border-blushPink', 'font-medium');
+        });
+        btn.classList.add('active', 'bg-ink', 'text-buttercream', 'font-semibold', 'shadow-petal');
+        btn.classList.remove('bg-white', 'text-ink', 'border', 'border-blushPink', 'font-medium');
+        activeDay = btn.dataset.day;
+        renderLineup();
+      });
+    });
+
+    document.querySelectorAll('.genre-tag').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.genre-tag').forEach(b => {
+          b.classList.remove('active', 'bg-blushPink', 'text-ink', 'font-semibold');
+          b.classList.add('bg-white/90', 'text-mutedInk', 'border', 'border-blushPink');
+        });
+        btn.classList.add('active', 'bg-blushPink', 'text-ink', 'font-semibold');
+        btn.classList.remove('bg-white/90', 'text-mutedInk', 'border', 'border-blushPink');
+        activeGenre = btn.dataset.genre;
+        renderLineup();
+      });
+    });
+
+    function resetLineupFilters() {
+      activeDay = 'all';
+      activeGenre = 'all';
+      document.querySelector('.day-tab[data-day="all"]').click();
+      document.querySelector('.genre-tag[data-genre="all"]').click();
+    }
+
+    // ---------------------------------------------------------
+    // 5. TONE.JS AMBIENT STAGE SYNTH PREVIEW
+    // ---------------------------------------------------------
+    let isPlayingVibe = false;
+    let synth = null;
+    let vibeLoop = null;
+
+    async function toggleVibeAudio() {
+      if (isPlayingVibe) {
+        stopVibeAudio();
+      } else {
+        await startVibeAudio();
+      }
+    }
+
+    async function startVibeAudio() {
+      try {
+        await Tone.start();
+        const artist = artistsData.find(a => a.id === selectedArtistId) || artistsData[0];
+
+        if (!synth) {
+          const reverb = new Tone.Reverb({ decay: 4.5, wet: 0.55 }).toDestination();
+          synth = new Tone.PolySynth(Tone.Synth, {
+            oscillator: { type: 'sine' },
+            envelope: { attack: 0.35, decay: 0.5, sustain: 0.45, release: 1.8 }
+          }).connect(reverb);
+          synth.volume.value = -13;
+        }
+
+        let step = 0;
+        vibeLoop = new Tone.Loop(time => {
+          const note = artist.notes[step % artist.notes.length];
+          synth.triggerAttackRelease(note, '2n', time);
+          step++;
+        }, '2n').start(0);
+
+        Tone.Transport.bpm.value = 84;
+        Tone.Transport.start();
+        isPlayingVibe = true;
+
+        document.getElementById('vibe-visualizer').classList.add('eq-active');
+        document.getElementById('vibe-btn-label').textContent = 'Stop Vibe';
+        document.getElementById('vibe-sub-label').textContent = `Playing ${artist.stage} Loop`;
+        document.getElementById('vibe-play-icon').innerHTML = `<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>`;
+      } catch (err) {
+        showToast('Audio preview ready—tap again to enable sound.');
+      }
+    }
+
+    function stopVibeAudio() {
+      if (vibeLoop) {
+        vibeLoop.stop();
+        vibeLoop.dispose();
+        vibeLoop = null;
+      }
+      Tone.Transport.stop();
+      isPlayingVibe = false;
+
+      document.getElementById('vibe-visualizer').classList.remove('eq-active');
+      document.getElementById('vibe-btn-label').textContent = 'Preview Vibe';
+      document.getElementById('vibe-sub-label').textContent = 'Ambient Synth Loop';
+      document.getElementById('vibe-play-icon').innerHTML = `<svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+    }
+
+    // ---------------------------------------------------------
+    // 6. TICKET CHECKOUT MODAL & CART CALCULATION
+    // ---------------------------------------------------------
+    const checkoutModal = document.getElementById('checkout-modal');
+    const prices = { single: 185, weekend: 335, vip: 645 };
+    const quantities = { single: 0, weekend: 1, vip: 0 };
+
+    function openCheckoutModal(preselectTier = null) {
+      if (preselectTier && quantities[preselectTier] === 0) {
+        quantities.single = 0;
+        quantities.weekend = 0;
+        quantities.vip = 0;
+        quantities[preselectTier] = 1;
+      }
+      updateCheckoutDisplay();
+      checkoutModal.classList.remove('hidden');
+      checkoutModal.classList.add('flex');
+    }
+
+    function closeCheckoutModal() {
+      if (!checkoutModal) return;
+      checkoutModal.classList.add('hidden');
+      checkoutModal.classList.remove('flex');
+    }
+
+    if (checkoutModal) {
+      checkoutModal.addEventListener('click', (e) => {
+        if (e.target === checkoutModal) closeCheckoutModal();
+      });
+    }
+
+    function updateQty(tier, delta) {
+      quantities[tier] = Math.max(0, Math.min(10, quantities[tier] + delta));
+      updateCheckoutDisplay();
+    }
+
+    function updateCheckoutDisplay() {
+      document.getElementById('qty-single').textContent = quantities.single;
+      document.getElementById('qty-weekend').textContent = quantities.weekend;
+      document.getElementById('qty-vip').textContent = quantities.vip;
+
+      const totalCount = quantities.single + quantities.weekend + quantities.vip;
+      const subtotal = (quantities.single * prices.single) + (quantities.weekend * prices.weekend) + (quantities.vip * prices.vip);
+      const fees = subtotal * 0.08;
+      const total = subtotal + fees;
+
+      document.getElementById('total-passes').textContent = `${totalCount} ${totalCount === 1 ? 'pass' : 'passes'}`;
+      document.getElementById('checkout-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById('checkout-fees').textContent = `$${fees.toFixed(2)}`;
+      document.getElementById('checkout-total').textContent = `$${total.toFixed(2)}`;
+
+      const confirmBtn = document.getElementById('confirm-order-btn');
+      if (totalCount === 0) {
+        confirmBtn.disabled = true;
+        confirmBtn.classList.add('opacity-40', 'cursor-not-allowed');
+      } else {
+        confirmBtn.disabled = false;
+        confirmBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+      }
+    }
+
+    function completeReservation() {
+      const totalCount = quantities.single + quantities.weekend + quantities.vip;
+      if (totalCount === 0) return;
+
+      closeCheckoutModal();
+      showToast(`Reserved ${totalCount} BLOOM 2027 ${totalCount === 1 ? 'pass' : 'passes'} for Central Park!`);
+    }
+
+    // ---------------------------------------------------------
+    // 7. NEWSLETTER & TOAST NOTIFICATION HELPERS
+    // ---------------------------------------------------------
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('newsletter-email');
+      if (emailInput.value.trim()) {
+        showToast(`Welcome to The Garden List, ${emailInput.value.trim()}!`);
+        emailInput.value = '';
+      }
+    });
+
+    let toastTimeout = null;
+    function showToast(message) {
+      const banner = document.getElementById('toast-banner');
+      const msgEl = document.getElementById('toast-message');
+      msgEl.textContent = message;
+
+      banner.classList.remove('translate-y-24', 'opacity-0');
+      banner.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        banner.classList.add('translate-y-24', 'opacity-0');
+        banner.classList.remove('translate-y-0', 'opacity-100');
+      }, 4200);
+    }
+
+    // Initialize Lineup on Load
+    renderLineup();
+    updateCheckoutDisplay();
+  </script>
+</body>
+</html>
